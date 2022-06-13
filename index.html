@@ -1,201 +1,337 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap.css" />
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/all.css" />
 
     <!-- Pyscript -->
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
     <style>
-        * {
-            font-family: 'Montserrat', sans-serif;
-        }
+      * {
+        font-family: "Montserrat", sans-serif;
+      }
     </style>
     <py-env>
         - paths:
-            - /lexical_analyzer_parser.py
+            - /lexical_analyzer_tba_kelompok5.py
     </py-env>
-    <title>TBA | Web Demo Kelompok 4</title>
-</head>
+    <title>TBA | Web Demo Kelompok 5</title>
+  </head>
 
-<body>
+  <body>
     <py-script>
-        from lexical_analyzer_parser import *
+        from lexical_analyzer_tba_kelompok5 import *
     </py-script>
-    <!-- START NAVBAR -->
-    <nav style="background-color: #29292C; height: 80px;" class="navbar navbar-expand-lg navbar-dark bg-dark"
-        aria-label="Tenth navbar example">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08"
-                aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
-                <ul id="menu" class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" style="font-weight: 700; font-size: 16px; color: #FA4A55;"
-                            aria-current="page" href="#demo">Demo Program</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" target="_blank"
-                            style="font-weight: 500; font-size: 16px; color: #EAEAEB; margin-left: 25px; margin-right: 25px;"
-                            href="https://github.com/alifbabrizq/TUBES-TBA">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="font-weight: 500; font-size: 16px; color: #EAEAEB;"
-                            href="#our-team">Our
-                            Team</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarsExample08"
+        aria-controls="navbarsExample08"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse justify-content-md-center"
+        id="navbarsExample08"
+      >
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Tubes TBA | Lexical and Parser</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="team.html">Team</a>
+          </li>
+        </ul>
+      </div>
     </nav>
     <!-- END NAVBAR -->
 
     <!-- START DEMO PROGRAM -->
-    <section id="demo" style="background-color: #04050A; padding-bottom: 200px;">
-        <div class="container text-center" style="color: #EAEAEB; padding-top: 58px;">
-            <h3 style="font-style: normal; font-weight: 600; font-size: 24px;">Tugas Besar</h3>
+    <section id="demo" style="background-color: #346bad; padding-bottom: 200px; height: 100vh;">
+      <div
+        class="container text-center"
+        style="color: #eaeaeb; padding-top: 58px"
+      >
+        <h3 style="font-style: normal; font-weight: 600; font-size: 24px">
+          Tugas Besar Kelompok 5
+        </h3>
+        <h1
+          style="
+            font-style: normal;
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 58px;
+            text-align: center;
+            padding-top: 24px;
+          "
+        >
+          Teori Bahasa Dan Automata <br />
+          Lexical Analyzer & Parser
+        </h1>
+        <p style="padding: 24px; margin-bottom: 28px">
+          Masukkan sebuah kalimat menggunakan bahasa Melayu. <br />
+          Kata yang diterima : <br />
+          saye || kamu || kite || makan || minum || tengok || bahagi || ikan ||
+          ais || kayu
+        </p>
+        <!-- <form id="form" class="" onsubmit="return false"> -->
+        <input
+          id="inputkalimat"
+          type="text"
+          class="form-control"
+          style="
+            border-radius: 7px;
+            border: none;
+            padding: 3px 28px;
+            height: 48px;
+            width: 450px;
+            margin-right: 5px;
+          "
+          placeholder="Masukkan kalimat di sini..."
+        />
+        <button
+          id="submit-button"
+          type="submit"
+          class="btn"
+          pys-onClick="checkSubmit"
+          onClick="buttonRefresh()"
+          style="
+            justify-content: center;
+            align-items: center;
+            padding: 3px 28px;
+            background-color: #fa4a55;
+            border-radius: 7px;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 40px;
+            color: #eaeaeb;
+          "
+        >
+          Check Lexical
+        </button>
+        <button
+          id="submit-button"
+          type="submit"
+          class="btn"
+          pys-onClick="checkSubmitParser"
+          onClick="buttonRefreshParser()"
+          style="
+            justify-content: center;
+            align-items: center;
+            padding: 3px 28px;
+            background-color: #fa4a55;
+            border-radius: 7px;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 40px;
+            color: #eaeaeb;
+          "
+        >
+          Check Parser
+        </button>
+        <!-- </form> -->
+        <div class="d-flex justify-content-center">
+          <div
+            id="output"
+            class="h-auto my-4 mx-2 p-5 text-center d-none"
+            style="
+              font-size: 18px;
+              font-weight: 500;
+              border-radius: 7px;
+              border: none;
+              width: 40%;
+              background-color: #29292c;
+              color: #eaeaeb;
+            "
+          >
             <h1
-                style="font-style: normal; font-weight: 700; font-size: 48px; line-height: 58px; text-align: center; padding-top: 24px;">
-                Teori Bahasa Dan Automata <br> Lexical Analyzer & Parser
+              class="pb-3"
+              style="font-size: 24px !important; font-weight: 700 !important"
+            >
+              Result Lexical Analyzer
             </h1>
-            <p style="padding: 24px; margin-bottom: 28px;">
-                Masukkan sebuah kalimat menggunakan bahasa Madura. <br> Cotoh kata yang diterima adalah : anom | embu |
-                sate | <br> kaju | sape | ajam | koncel | tono | keba | tompa
-            </p>
-            <!-- <form id="form" class="" onsubmit="return false"> -->
-            <input id="inputkalimat" type="text" class="form-control"
-                style="border-radius: 7px; border: none; padding: 3px 28px; height: 48px; width: 450px; margin-right: 5px;"
-                placeholder="Masukkan kalimat di sini...">
-            <button id="submit-button" type="submit" class="btn" pys-onClick="checkSubmit" onClick="buttonRefresh()"
-                style="justify-content: center; align-items: center; padding: 3px 28px; background-color: #FA4A55; border-radius: 7px; font-weight: 600; font-size: 18px; line-height: 40px; color: #EAEAEB">Check</button>
-                <!-- </form> -->
-                <div class="d-flex justify-content-center">
-                    <div id="output" class="h-auto my-4 mx-2 p-5 text-center d-none" style="font-size: 18px; font-weight: 500; border-radius: 7px; border: none; width: 40%; background-color: #29292C; color: #EAEAEB">
-                        <h1 class="pb-3" style="font-size: 24px!important; font-weight: 700!important;">Lexical Analyzer</h1>
-                        <div id="lexical" class="">
-        
-                        </div>
-                    </div>
-                    <div id="output2" class="h-auto my-4 mx-2 p-5 text-center d-none" style="font-size: 18px; font-weight: 500; border-radius: 7px; border: none; width: 40%; background-color: #29292C; color: #EAEAEB">
-                        <h1 class="pb-3" style="font-size: 24px!important; font-weight: 700!important;">Parser</h1>
-                        <div id="parser" class="">
-                
-                        </div>
-                    </div>
-                </div>
-            <button id="refresh" type="submit" class="btn d-none" onClick="history.go(0);"
-                style="justify-content: center; align-items: center; padding: 3px 28px; background-color: #FA4A55; border-radius: 7px; font-weight: 600; font-size: 18px; line-height: 40px; color: #EAEAEB">Refresh</button>
+            <div id="lexical" class=""></div>
+          </div>
+          <div
+            id="output2"
+            class="h-auto my-4 mx-2 p-5 text-center d-none"
+            style="
+              font-size: 18px;
+              font-weight: 500;
+              border-radius: 7px;
+              border: none;
+              width: 40%;
+              background-color: #29292c;
+              color: #eaeaeb;
+            "
+          >
+            <h1
+              class="pb-3"
+              style="font-size: 24px !important; font-weight: 700 !important"
+            >
+            Result Parser
+            </h1>
+            <div id="parser" class=""></div>
+          </div>
         </div>
+        <button
+          id="refresh"
+          type="submit"
+          class="btn d-none"
+          onClick="history.go(0);"
+          style="
+            justify-content: center;
+            align-items: center;
+            padding: 3px 28px;
+            background-color: #fa4a55;
+            border-radius: 7px;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 40px;
+            color: #eaeaeb;
+          "
+        >
+          Refresh
+        </button>
+      </div>
     </section>
     <!-- END DEMO PROGRAM -->
 
-    <!-- START OUR TEAM -->
-    <section id="our-team" style="background-color: #04050A; padding-top: 58px; padding-bottom: 100px;">
-        <div class="container text-center" style="color: #EAEAEB;">
-            <h1 class="pb-2" style="font-size: 36px; font-weight: 700;">Meet Our Team</h1>
-            <p>Kelompok 4</p>
-            <div class="row row-cols-1 row-cols-md-3 g-4 p-5">
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="card-body py-4 px-2">
-                            <h5 class="card-title">Alif Babrizq Kuncara</h5>
-                            <p class="card-text">1301204228</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="card-body py-4 px-2">
-                            <h5 class="card-title">Muhammad Rafi Yanaputeranto</h5>
-                            <p class="card-text">1301204352</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="card-body py-4 px-2">
-                            <h5 class="card-title">Noval Dzaki</h5>
-                            <p class="card-text">1301204505</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- END OUR TEAM -->
 
-    <button id="help" type="button" class="btn float-right m-3 rounded-circle text-center opacity-50" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                style="justify-content: center; align-items: center; width: 60px; height: 60px; background-color: #FA4A55; font-weight: 900; font-size: 24px; line-height: 40px; color: #EAEAEB; position: fixed; position: fixed;
-                right: 0; bottom: 0;">?</button>
+    <button
+      id="help"
+      type="button"
+      class="btn float-right m-3 rounded-circle text-center opacity-50"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      style="
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        background-color: #fa4a55;
+        font-weight: 900;
+        font-size: 24px;
+        line-height: 40px;
+        color: #eaeaeb;
+        position: fixed;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+      "
+    >
+      ?
+    </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Grammar</h5>
-            </div>
-            <div class="modal-body">
-               <p> S → NN VB NN</p>
-               <p class="py-2"> NN → anom | embu | sate | kaju | sape | ajam | koncel </p>
-               <p> VB → tono | keba | tompa </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-            </div>
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Grammar</h5>
+          </div>
+          <div class="modal-body">
+            <p>S → NN VB NN</p>
+            <p class="py-2">
+              NN → saye || kamu || kite || ikan || ais || kayu
+            </p>
+            <p>VB → minum || tengok || bahagi || makan</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
-
+    
     <py-script output="output" output="output2">
         def checkSubmit(*args, **kwargs):
             kalimat = Element('inputkalimat').element.value
             resultLexical = lexicalAnalyzer(kalimat)
             if kalimat == "" :
                 pyscript.write('lexical', "Input tidak boleh kosong!")
-                pyscript.write('parser', "Input tidak boleh kosong!")
+                <!-- pyscript.write('parser', "Input tidak boleh kosong!") -->
             else:
                 if resultLexical :
                     pyscript.write('lexical', f'Semua token : {kalimat} is valid')
-                    resultParser = parser(kalimat)
+                    <!-- resultParser = parser(kalimat)
                     if resultParser :
                         pyscript.write('parser', f'VALID! {kalimat} diterima sesuai grammar')
                     else :
-                        pyscript.write('parser', f'ERROR! {kalimat} tidak diterima tidak sesuai grammar')
+                        pyscript.write('parser', f'ERROR! {kalimat} tidak diterima tidak sesuai grammar') -->
                 else :
                     pyscript.write('lexical', "ERROR!")
-                    pyscript.write('parser', "ERROR!")
+                    <!-- pyscript.write('parser', "ERROR!") -->
+        def checkSubmitParser(*args, **kwargs):
+            kalimatParser = Element('inputkalimat').element.value
+            resultParser = parser(kalimatParser)
+            if kalimatParser == "" :
+                pyscript.write('parser', "Input tidak boleh kosong!")
+            else:
+                if resultParser:
+                    pyscript.write('parser', f'VALID! {kalimat} diterima sesuai grammar')
+                else:
+                    pyscript.write('parser', f'ERROR! {kalimat} tidak diterima tidak sesuai grammar')
+                
     </py-script>
 
     <script>
-        function buttonRefresh(){
-            var refreshButton = document.getElementById('refresh')
-            refreshButton.classList.remove('d-none')
-            var disableBtn = document.getElementById('submit-button')
-            disableBtn.classList.add('disabled')
-            var lexicalResult = document.getElementById('output')
-            lexicalResult.classList.remove('d-none')
-            var parserResult = document.getElementById('output2')
-            parserResult.classList.remove('d-none')
-            var help = document.getElementById('help')
-            help.classList.remove('opacity-50')
-        }
+      function buttonRefresh() {
+        var refreshButton = document.getElementById("refresh");
+        refreshButton.classList.remove("d-none");
+        var disableBtn = document.getElementById("submit-button");
+        disableBtn.classList.add("disabled");
+        var lexicalResult = document.getElementById("output");
+        lexicalResult.classList.remove("d-none");
+        // var parserResult = document.getElementById("output2");
+        // parserResult.classList.remove("d-none");
+        var help = document.getElementById("help");
+        help.classList.remove("opacity-50");
+      }
+      function buttonRefreshParser() {
+        var refreshButton = document.getElementById("refresh");
+        refreshButton.classList.remove("d-none");
+        var disableBtn = document.getElementById("submit-button");
+        disableBtn.classList.add("disabled");
+        // var lexicalResult = document.getElementById("output");
+        // lexicalResult.classList.remove("d-none");
+        var parserResult = document.getElementById("output2");
+        parserResult.classList.remove("d-none");
+        var help = document.getElementById("help");
+        help.classList.remove("opacity-50");
+      }
     </script>
 
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/all.js"></script>
-</body>
-
+  </body>
 </html>
