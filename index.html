@@ -281,7 +281,8 @@
                 if resultLexical :
                     pyscript.write('lexical', f'Semua token : {kalimat} is valid')
                 else :
-                    pyscript.write('lexical', "ERROR!")
+                    pyscript.write('lexical', "ERROR!")           
+
         def checkSubmitParser(*args, **kwargs):
             kalimatParser = Element('inputkalimat').element.value
             resultParser = parser(kalimatParser)
@@ -289,9 +290,9 @@
                 pyscript.write('parser', "Input tidak boleh kosong!")
             else:
                 if resultParser:
-                    pyscript.write('parser', f'VALID! {kalimat} diterima sesuai grammar')
+                    pyscript.write('parser', f'VALID! {kalimatParser} diterima sesuai grammar')
                 else:
-                    pyscript.write('parser', f'ERROR! {kalimat} tidak diterima tidak sesuai grammar')
+                    pyscript.write('parser', f'ERROR! {kalimatParser} tidak diterima tidak sesuai grammar')
                 
     </py-script>
 
