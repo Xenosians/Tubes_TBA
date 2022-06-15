@@ -13,13 +13,6 @@ import string
 # Gerin Aryo Prasetia (1301194479)
 # Keenan Ariqul Hashim (1301202323)
 
-
-# input example
-# print("kata dalam bahasa melayu yang telah dipelajari")
-# print("saye || kamu || kite || makan || minum ")
-# print("tengok || bahagi || ikan || ais || kayu ")
-# sentence = (input("silahkan masukan kalimat: ",))
-
 def lexicalAnalyzer(kalimat):
     input_string = kalimat.lower()+'#'
 
